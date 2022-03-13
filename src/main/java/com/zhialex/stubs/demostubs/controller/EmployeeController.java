@@ -36,18 +36,18 @@ public class EmployeeController {
         return status(CREATED).body(emp);
     }
 
-    @GetMapping("/employees")
+    @GetMapping("/all")
     public ResponseEntity<List<Employee>> getEmployees() {
         return ok(employeeRepository.findAll());
     }
 
-    @GetMapping("employee/{id}")
+    @GetMapping("get/{id}")
     public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
         Employee emp = employeeRepository.findById(id).orElseThrow(() -> new EmployeeNotFoundException(id));
         return ok(emp);
     }
 
-    @DeleteMapping("employee/{id}")
+    @DeleteMapping("delete/{id}")
     public ResponseEntity<Void> deleteEmployee(@PathVariable Long id) {
         Employee emp = employeeRepository.findById(id).orElseThrow(() -> new EmployeeNotFoundException(id));
         employeeRepository.deleteById(emp.getId());
