@@ -12,9 +12,8 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @Entity
 public class Employee {
-    private @Id
-    @GeneratedValue
-    Long id;
+    @Id @GeneratedValue
+    private Long id;
     @NotNull(message = "name is required")
     private String name;
     @NotNull(message = "salary is required")
